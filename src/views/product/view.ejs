@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>비누</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/5cb4758abd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="s-navbar">
+    <div class="left-s-navbar">
+        <img src="/img/logo.png" alt="" width="240px">
+    </div>
+    <div class="right-s-navbar">
+        <div class="s-input">
+            <span>All</span>
+            <input type="text" placeholder="Search-Here">
+            <span><i class="fas fa-search"></i></span>
+        </div>
+    </div>
+    <ul>
+        <li><i class="fas fa-heart"></i>Fvourites</li>
+        <li><i class="fas fa-box"></i>Cart</li>
+        <!--{{#if user}}
+        {{user.fullName}} 님 환영합니다.
+        <li><a href="/logout">로그아웃</a></li>
+        {{else}}
+        <li><a class="nav-link" href="/signin">SignIn</a></li>
+        {{/if}}-->
+        <% if(user != '' && user != null){ %>
+            <%= user.fullName %>님 환영합니다.
+        <li><a href="/logout">로그아웃</a></li>
+        <% } else { %>
+        <li><a class="nav-link" href="/signin">SignIn</a></li>
+        <% } %>
+
+
+    </ul>
+</section>
+<section class="top-c">
+    <div class="top-c-outer">
+<!--        {{#each product}}
+        <div class="top-c-right">
+            <div class="top-c-sb">
+                <img src="{{pictureUrl}}" alt="1">
+                타이틀 : {{title}} <br>
+                써머리 : {{summary}} <br>
+                가격 : {{price}} <br>
+                수량 : {{quantity}} <br>
+                내용 : {{content}} <br>
+                내용2:
+                <c:out value="{{content}}" escapeXml="false"/>
+            </div>
+        </div>
+        {{else}}
+        <div class="top-c-right">
+            <div class="top-c-sb">
+                해당 상품이 없습니다.
+            </div>
+        </div>
+        {{/each}}-->
+        <% if(product != '' && product != null){ %>
+            <% for(var i = 0; i < product.length; i++) { %>
+            <div class="top-c-right">
+                <div class="top-c-sb">
+                    <img src="<%=product[i].pictureUrl%>" alt="1">
+                    타이틀 : <%=product[i].title%><br>
+                    써머리 : <%=product[i].summary%><br>
+                    가격 : <%=product[i].price%><br>
+                    수량 : <%=product[i].quantity%><br>
+                    내용 : <%=product[i].content%><br>
+                </div>
+            </div>
+            <% } %>
+        <% } else { %>
+        <div class="top-c-right">
+            <div class="top-c-sb">
+                해당 상품이 없습니다.
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+
+<section class="top-c">
+    <div class="top-c-outer">
+        <p>리뷰</p>
+        <% if(reviewRows != '' && reviewRows != null){ %>
+            <% for(var i = 0; i < reviewRows.length; i++) { %>
+            <div class="top-c-right">
+                <div class="top-c-sb">
+                    타이틀 : <%=reviewRows[i].title%><br>
+                    타이틀 : <%=reviewRows[i].fullName%><br>
+
+                    점수 :
+                    <% for(var j = 0; j < reviewRows[i].rating; j++) { %>
+                        ★
+                    <% } %>
+
+                    내용 : <%=reviewRows[i].content%><br>
+                    날짜 : <%=reviewRows[i].createdAt%><br>
+                </div>
+            </div>
+            <% } %>
+        <% } else { %>
+            <div class="top-c-right">
+                <div class="top-c-sb">
+                    아직 등록된 후기가 없습니다
+                </div>
+            </div>
+        <% } %>
+    </div>
+</section>
+
+</body>
+</html>

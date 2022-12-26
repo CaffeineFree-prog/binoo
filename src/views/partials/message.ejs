@@ -1,0 +1,99 @@
+<!--{{#if message}}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}-->
+<% if(message != '' && message != null){ %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!--{{#if success}}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{success}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}-->
+<% if(success != '' && success != null){ %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!--{{#if error}}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}-->
+<% if(error != '' && error != null){ %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%=error%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<!--{{#each errors}}
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{this}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}-->
+<% if(errors != '' && errors != null){ %>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%=this%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>비누</title>
+  <link href="/styles/style.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5cb4758abd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="s-navbar">
+  <div class="left-s-navbar">
+    <img src="/img/logo.png" alt="" width="240px">
+  </div>
+  <div class="right-s-navbar">
+    <div class="s-input">
+      <span>All</span>
+      <input type="text" placeholder="Search-Here">
+      <span><i class="fas fa-search"></i></span>
+    </div>
+  </div>
+  <ul>
+    <li><i class="fas fa-heart"></i>Fvourites</li>
+    <li><i class="fas fa-box"></i>Cart</li>
+<!--    {{#if user}}
+    {{user.fullName}} 님 환영합니다.
+    <li><a href="/logout">로그아웃</a></li>
+    {{else}}
+    <li><a class="nav-link" href="/signin">SignIn</a></li>
+    {{/if}}-->
+    <% if(user != '' && user != null){ %>
+      <%= user.fullName %>님 환영합니다.
+    <li><a href="/logout">로그아웃</a></li>
+    <% } else { %>
+    <li><a class="nav-link" href="/signin">SignIn</a></li>
+    <% } %>
+
+
+  </ul>
+</section>
+<section class="top-c">
+  <div class="top-c-outer">
+    <div class="top-c-left">
+    </div>
+<!--    {{#each categoryList}}
+    <div class="top-c-right">
+      <div class="top-c-sb">
+        <a href="/product/view/{{id}}" target="_blank">
+          <img src="{{pictureUrl}}" alt="1">
+          {{title}} {{price}}
+        </a>
+      </div>
+    </div>
+    {{else}}
+    <div class="top-c-right">
+      <div class="top-c-sb">
+        상품이 없습니다.
+      </div>
+    </div>
+    {{/each}}-->
+    <% if(cateProduct != '' && cateProduct != null){ %>
+      <% for(var i = 0; i < cateProduct.length; i++) { %>
+        <div class="top-c-right">
+          <div class="top-c-sb">
+            <a href="/product/view/<%=cateProduct[i].id%>">
+              <img src="<%=cateProduct[i].pictureUrl%>" alt="1">
+              <%=cateProduct[i].title%>
+              <%=cateProduct[i].price%>
+            </a>
+          </div>
+        </div>
+      <% } %>
+    <% } else { %>
+    <div class="top-c-right">
+      <div class="top-c-sb">
+        상품이 없습니다.
+      </div>
+    </div>
+    <% } %>
+
+    <!--페이징-->
+    <% if(page > 1) { %>
+    <a href="/product/categoryList/<%=id%>?page=<%=page-1%>">Before</a>
+    <% } %>
+
+    <% for(let i = iterator; i <= endingLink; i++) { %>
+      <% if(i == page) { %>
+      <!--<a class="selectedLink" href="/product/categoryList/<%=id%>?page=<%=i%>"><%=i%></a>-->
+      <p><%=i%></p>
+      <% continue; %>
+      <% } %>
+      <a href="/product/categoryList/<%=id%>?page=<%=i%>"><%=i%></a>
+    <% } %>
+
+    <% if(page < numberOfPages) { %>
+    <a href="/product/categoryList/<%=id%>?page=<%=page+1%>">After</a>
+    <% } %>
+  </div>
+</section>
+
+
+
+
+</body>
+</html>

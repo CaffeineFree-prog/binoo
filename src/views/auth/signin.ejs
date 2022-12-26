@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>P9</title>
+    <link href="/styles/style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/5cb4758abd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="s-navbar">
+        <div class="left-s-navbar">
+            <img src="/img/logo.png" alt="" width="240px">
+        </div>
+        <div class="right-s-navbar">
+            <div class="s-input">
+                <span>All</span>
+                <input type="text" placeholder="Search-Here">
+                <span><i class="fas fa-search"></i></span>
+            </div>
+        </div>
+        <ul>
+            <li><a class="nav-link" href="/signin">SignIn</a></li>
+            <li><i class="fas fa-heart"></i>Fvourites</li>
+            <li><i class="fas fa-box"></i>Cart</li>
+        </ul>
+    </section>
+
+    <header>
+        <form action="/signin" method="POST">
+
+            <h3 class="text-center my-3">로그인</h3>
+            <div>
+                <label>이메일</label><br>
+                <input type="text" name="email" placeholder="youremail@mail.com" autofocus /><br>
+
+                <label>비밀번호</label>
+                <div>
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+                <button>
+                    Login
+                </button>
+
+            </div>
+        </form>
+
+        <p>계정이 없다면
+            <a href="/signup">회원가입</a>
+        </p>
+    </header>
+
+</section>
+</body>
+</html>

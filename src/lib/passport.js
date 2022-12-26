@@ -14,7 +14,7 @@ passport.use(
     },
     async (req, email, password, done) => {
       const [rows] = await pool.query(
-        "SELECT * FROM users WHERE email = ?",
+        "SELECT * FROM user WHERE email = ?",
         [email]
       );
 
@@ -23,7 +23,7 @@ passport.use(
       const user = rows[0];
       const validPassword = await helpers.matchPassword(
         password,
-        user.password
+        user.passwordHash
       );
 
       if (!validPassword) return done(null, false, req.flash("error", "Incorrect Password"));
@@ -34,10 +34,14 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-  const [rows] = await pool.query("SELECT * FROM users WHERE id = ?", [id]);
-  done(null, rows[0]);
+    if(id != 0){
+        const [rows] = await pool.query("SELECT * FROM user WHERE id = ?", [id]);
+        done(null, rows[0]);
+    } else {
+        done(null, false);
+    }
 });

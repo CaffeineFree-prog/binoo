@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>P9</title>
+  <link href="/styles/style.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5cb4758abd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="s-navbar">
+  <div class="left-s-navbar">
+    <img src="/img/logo.png" alt="" width="240px">
+  </div>
+  <div class="right-s-navbar">
+    <div class="s-input">
+      <span>All</span>
+      <input type="text" placeholder="Search-Here">
+      <span><i class="fas fa-search"></i></span>
+    </div>
+  </div>
+  <ul>
+    <li><i class="fas fa-box"></i>Cart</li>
+  </ul>
+</section>
+
+<header>
+  <div>
+    <div>
+      <form action="/user/edit" method="POST">
+      <h1>Welcome <%=user.fullName%> 님</h1>
+      <h4><input type="text" name="mobile" value="<%=user.mobile%>"/></h4>
+      <h4>이메일 : <%=user.email%></h4>
+
+      <p>
+        <a href="/user/password" class="text-info">비밀번호 변경</a>
+      </p>
+        <button class="btn btn-success btn-block">
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+</section>
+</body>
+</html>
